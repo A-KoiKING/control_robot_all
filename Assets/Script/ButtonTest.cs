@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -53,6 +54,9 @@ public class ButtonTest : MonoBehaviour
 
     [SerializeField] private Vector2 _LeftInputValue;
     [SerializeField] private Vector2 _RightInputValue;
+
+    public TextMeshProUGUI Left;
+    public TextMeshProUGUI Right;
 
     private void Awake()
     {
@@ -266,12 +270,16 @@ public class ButtonTest : MonoBehaviour
     private void OnRight(InputAction.CallbackContext context)
     {
         _RightInputValue = context.ReadValue<Vector2>();
+        Right.text = context.ReadValue<Vector2>().ToString();
+
         _RightInputValue *= 5.5f;
         _R.transform.localPosition = _RightInputValue;
     }
     private void OnLeft(InputAction.CallbackContext context)
     {
         _LeftInputValue = context.ReadValue<Vector2>();
+        Left.text = context.ReadValue<Vector2>().ToString();
+
         _LeftInputValue *= 5.5f;
         _L.transform.localPosition = _LeftInputValue;
     }

@@ -61,11 +61,6 @@ public class UdpSend : MonoBehaviour
 
         client = new UdpClient();
         client.Connect(host, port);
-
-#if UNITY_STANDALONE_WIN || UNITY_STANDALONE_OSX
-        //WindowSizeAdjusterの付いたオブジェクトを生成し、DontDestroyOnLoadでシーンを跨いでも破棄されないように
-        DontDestroyOnLoad(new GameObject("windowsize", typeof(windowsize)));
-        #endif
     }
 
 
